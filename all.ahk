@@ -1,46 +1,54 @@
->!p::
-run,https://www.bilibili.com/
-return
+; Default state of lock keys
+; SetNumlockState, AlwaysOff
+; SetCapsLockState, AlwaysOff
+; SetScrollLockState, AlwaysOff
+; return
 
-;^+c::run,control ;打开控制面板
 
+;=================================system command start==========================
+#Del::FileRecycleEmpty 	;清空回收站
+!x:: send !{f4}		;关闭窗口
+#m:: WinMinimize, A	;窗口最小化
+f4:: Winset, Alwaysontop, , A
+Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
+;=================================system command end==========================
+
+
+;======================HotString start========================================
+;第一种是输入很短的字符显示很长的字符(`n是换行的符号)
+;::slf::Select * From `nWhere `nAnd `nGroup by `nOrder by `nlimit `n
 ;::slf:: select * from
+::btw::by the way  ; 当您按下一个默认的结束符时, 用"by the way"替换掉"btw".
+:*:make-tree::npx htree -i node_modules --output tree.txt --force
+;======================HotString end==========================================
 
-!delete::FileRecycleEmpty 	;清空回收站
 
-;======================打开网站(ctrl+shift+?)================================
-;第一种,快捷启动网站
+;===============================run start==========================================
+;======================第一种,打开网站(ctrl+shift+?)================================
 ^+g:: run, https://github.com/ ;打开github
 ^+b:: run, https://www.bilibili.com/	;打开B站
 ^+t:: run, https://v.qq.com/		;打开腾讯视频
 ;^+y:: run, https://www.youku.com/	;打开优酷
 
-;======================启动软件(alt+shift+?)================================
+;======================第二种,启动软件(alt+shift+?)================================
 !+a:: run, D:\AnotherRedis\Another Redis Desktop Manager\Another Redis Desktop Manager.exe ;打开AnotherRedisDesktopManager
 !+n:: run, D:\Navicat Premium\navicat.exe ;打开Navicat Premium
 !+y:: run, D:\YoudaoDict\Dict\YoudaoDict.exe ;打开有道词典
 !+p:: run, C:\Users\overmind\AppData\Local\Postman\Postman.exe ;打开postman
-!+i::  run, C:\Users\overmind\scoop\apps\idea-ultimate\2020.3\bin\idea64.exe ;打开IDEA
-!+b::  run, D:\BaiduNetDisk\BaiduNetdisk.exe ;打开百度网盘
-!+d::  run, C:\Program Files\Docker\Docker\Docker Desktop.exe ;打开Docker Desktop
-!+v::  run, D:\VScode\Microsoft VS Code\Code.exe ;打开Visual Studio Code
-!+q::  run, D:\QQ\Bin\QQScLauncher.exe ;打开QQ
+!+i:: run, C:\Users\overmind\scoop\apps\idea-ultimate\2020.3\bin\idea64.exe ;打开IDEA
+!+b:: run, D:\BaiduNetDisk\BaiduNetdisk.exe ;打开百度网盘
+!+d:: run, C:\Program Files\Docker\Docker\Docker Desktop.exe ;打开Docker Desktop
+!+v:: run, D:\VScode\Microsoft VS Code\Code.exe ;打开Visual Studio Code
+!+q:: run, D:\QQ\Bin\QQScLauncher.exe ;打开QQ
+^+d::Run "C:\Users\overmind\Downloads" ;打开下载目录
+#g:: Run Cmd.exe ;打开cmd
+#z::run notepad ;打开notepad
+;^+c::run,control ;打开控制面板
+;===============================run end==========================================
 
-;======================热键缩写================================
-;第一种是输入很短的字符显示很长的字符(`n是换行的符号)
-;::slf::Select * From `nWhere `nAnd `nGroup by `nOrder by `nlimit `n
 
-::yym::
-FormatTime, CurrentDateTime,, yyyy-MM-dd HH:mm:ss ; 形式：晏犹眠08月16-11点-43-51短片
-SendInput 晏犹眠 %CurrentDateTime% 短片
-return
-
-;第二种是输入快捷键显示一段话
-;^j::
-Send,Hello,大家好,我是晏犹眠 `n谢谢你观看我的视频,如果喜欢请点赞支持一下 `n我跟大家念首诗: `n处穷上策更谁如,日晏犹眠为腹虚
-return
-
-;==选中关键字后,同时按下windows+1，打开百度搜索===============================
+;=================================windows start=================================
+;百度搜索
 #1::  			;win+b
 	Send ^c   	;输入 ctrl+c
 	sleep,100  	;等待100毫秒
@@ -48,21 +56,20 @@ return
 	run https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=92765401_hao_pg&wd=%clipboard%  
 return
 
+;谷歌搜索
 #2::
-	run C:/Program Files (x86)/Google/Chrome/Application/chrome.exe,%clipboard%
-return
-
-#3::
-	run, %Clipboard%
-return
-
-!x:: send !{f4}		;关闭窗口
-#m:: WinMinimize, A	;窗口最小化
+{
+ Send, ^c
+ Sleep 50
+ Run, http://www.google.com/search?q=%clipboard%
+ Return
+}
+;=================================windows end=================================
 
 ;=============无敌工作神器之终极计时器===============================
 #+t:: 
 var := 0
-InputBox, time, 晏犹眠, 请输入一个时间（单位是分）
+InputBox, time, 请输入一个时间（单位是分）
 time := time*60000
 Sleep,%time%
 loop,16
@@ -70,9 +77,8 @@ loop,16
 var += 180
 SoundBeep, var, 500
 }
-msgbox 时间到，啊啊啊！！！晏犹眠,快点!!!!
+msgbox 时间到，啊啊啊！！！快点!!!!
 return
-
 
 ;=========================================================
 ~lbutton & enter:: ;鼠标放在任务栏，滚动滚轮实现音量的加减
@@ -112,8 +118,8 @@ Return,0
     ;msgbox 当前坐标RGB颜色值的十六进制值为#%color%.
 return
 
-;========文本操作命令================================
-^+c:: ;复制当前鼠标所在文件文件名
+;========复制当前鼠标所在文件文件名================================
+^+c::
 ;请将你的鼠标放在目标文件位置，即将为你复制其文件名
 mouseclick, right
 send,m
@@ -124,7 +130,8 @@ sleep, 1500
 tooltip,m
 return
 
-^+!c:: ;用快捷键得到当前选中文件的路径
+;========用快捷键得到当前选中文件的路径================================
+^+!c::
 send ^c
 sleep,200
 clipboard=%clipboard% ;windows 复制的时候，剪贴板保存的是“路径”。只是路径不是字符串，只要转换成字符串就可以粘贴出来了
@@ -133,7 +140,8 @@ sleep,500
 tooltip,
 return
 
-!#+n:: ;将鼠标所在文件重命名为剪切板内容
+;将鼠标所在文件重命名为剪切板内容
+!#+n::
 clipboard = %clipboard%   ; 把任何复制的文件, HTML 或其他格式的文本转换为纯文本
 send,{F8}
 sleep,100
@@ -146,27 +154,40 @@ sleep, 1500
 tooltip,
 return
 
-:*:1111:: ;无损删除当前行
+;==================无损删除当前行===============
+:*:1111::
 send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
 return
 
-:*:2222:: ;无损删除当前行
-send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
-send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
-return
-
-:*:3333:: ;无损删除当前行
-send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
+;==================无损删除当前行===============
+:*:2222::
 send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
 send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
 return
 
-:*:xxx:: ;键盘秘技之剪切当前行
+;==================无损删除当前行===============
+:*:3333::
+send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
+send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
+send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
+return
+
+;==================键盘秘技之剪切当前行==================
+:*:xxx::
 send,{home}{shiftdown}{end}{shiftup}
 send,^x
 clipboard = %clipboard%   ; 把任何复制的文件, HTML 或其他格式的文本转换为纯文本
 return
 
+::yym::
+FormatTime, CurrentDateTime,, yyyy-MM-dd HH:mm:ss ; 形式：晏犹眠08月16-11点-43-51短片
+SendInput 晏犹眠 %CurrentDateTime% 短片
+return
+
+;第二种是输入快捷键显示一段话
+;^j::
+Send,Hello,大家好,我是晏犹眠 `n谢谢你观看我的视频,如果喜欢请点赞支持一下 `n我跟大家念首诗: `n处穷上策更谁如,日晏犹眠为腹虚
+return
 
 ;======键盘映射========================================
 
@@ -179,7 +200,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;Numpad7::a
 ;Numpad8::b
 ;Numpad9::c
-
 
 ;======重复执行======================================
 +^f1::
@@ -200,17 +220,8 @@ return
 click, 51,1010
 return
 
-;======窗口置顶======================================
-f4:: Winset, Alwaysontop, , A
-
-;;======打开notepad======================================
-#z::
-run notepad
-
 #MaxHotkeysPerInterval 20000
 
-;Shift + Enter 另起新行
-Shift & Enter::Send {End}{Enter}
 
 ; Ctrl + BackSpace 删除单词
 #IF WinActive("ahk_class Notepad")
@@ -243,12 +254,48 @@ Send {delete}
 return
 ;;;;;;;;;;;;;;;;;;;;;;终止;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;HotString appin
-::appinn::
-text = http://www.appinn.com
-clipboard = %text%
-Send ^v
+;==========================循环点击示例(秒杀/抢购时使用)============================
+; ^h::
+; loop, 10
+; {
+; click
+; sleep 200
+; }
+; return
+
+; ===========================test=======================
+
+#4::
+Send "
+(
+Line 1
+Line 2
+Apples are a fruit.
+)"
+MsgBox A_AhkVersion
 return
 
-;HotString weibo
-::weibo::https://weibo.com
+Numpad0 & Numpad2::
+Run "notepad.exe"
+return
+
+#If WinActive("Untitled - Notepad")
+#Space::
+MsgBox "You pressed WIN+SPACE in Notepad."
+return
+
+; 任何标题不是无标题 - 记事本的窗口
+#If
+!q::
+MsgBox "You pressed ALT+Q in any window."
+return
+
+#If WinActive("ahk_class Notepad")
+#Space::
+MsgBox "You pressed WIN+SPACE in Notepad."
+return
+::msg::You typed msg in Notepad
+
+>!p::
+run,https://www.bilibili.com/
+return
