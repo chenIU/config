@@ -2,9 +2,9 @@
 run,https://www.bilibili.com/
 return
 
-^+c::run,control ;打开控制面板
+;^+c::run,control ;打开控制面板
 
-::slf:: select * from
+;::slf:: select * from
 
 !delete::FileRecycleEmpty 	;清空回收站
 
@@ -13,7 +13,7 @@ return
 ^+g:: run, https://github.com/ ;打开github
 ^+b:: run, https://www.bilibili.com/	;打开B站
 ^+t:: run, https://v.qq.com/		;打开腾讯视频
-^+y:: run, https://www.youku.com/	;打开优酷
+;^+y:: run, https://www.youku.com/	;打开优酷
 
 ;======================启动软件(alt+shift+?)================================
 !+a:: run, D:\AnotherRedis\Another Redis Desktop Manager\Another Redis Desktop Manager.exe ;打开AnotherRedisDesktopManager
@@ -28,7 +28,7 @@ return
 
 ;======================热键缩写================================
 ;第一种是输入很短的字符显示很长的字符(`n是换行的符号)
-::slf::Select * From `nWhere `nAnd `nGroup by `nOrder by `nlimit `n
+;::slf::Select * From `nWhere `nAnd `nGroup by `nOrder by `nlimit `n
 
 ::yym::
 FormatTime, CurrentDateTime,, yyyy-MM-dd HH:mm:ss ; 形式：晏犹眠08月16-11点-43-51短片
@@ -36,7 +36,7 @@ SendInput 晏犹眠 %CurrentDateTime% 短片
 return
 
 ;第二种是输入快捷键显示一段话
-^j::
+;^j::
 Send,Hello,大家好,我是晏犹眠 `n谢谢你观看我的视频,如果喜欢请点赞支持一下 `n我跟大家念首诗: `n处穷上策更谁如,日晏犹眠为腹虚
 return
 
@@ -46,6 +46,14 @@ return
 	sleep,100  	;等待100毫秒
 	;根据选中的内容打开百度搜索
 	run https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=92765401_hao_pg&wd=%clipboard%  
+return
+
+#2::
+	run C:/Program Files (x86)/Google/Chrome/Application/chrome.exe,%clipboard%
+return
+
+#3::
+	run, %Clipboard%
 return
 
 !x:: send !{f4}		;关闭窗口
@@ -105,16 +113,7 @@ Return,0
 return
 
 ;========文本操作命令================================
-!1:: ;用快捷键得到当前选中文件的路径
-send ^c
-sleep,200
-clipboard=%clipboard% ;windows 复制的时候，剪贴板保存的是“路径”。只是路径不是字符串，只要转换成字符串就可以粘贴出来了
-tooltip,%clipboard% ;提示文本
-sleep,500
-tooltip,
-return
-
-!2:: ;复制当前鼠标所在文件文件名
+^+c:: ;复制当前鼠标所在文件文件名
 ;请将你的鼠标放在目标文件位置，即将为你复制其文件名
 mouseclick, right
 send,m
@@ -123,6 +122,15 @@ send, {enter}
 tooltip,已将鼠标所在文件名复制到剪切板
 sleep, 1500
 tooltip,m
+return
+
+^+!c:: ;用快捷键得到当前选中文件的路径
+send ^c
+sleep,200
+clipboard=%clipboard% ;windows 复制的时候，剪贴板保存的是“路径”。只是路径不是字符串，只要转换成字符串就可以粘贴出来了
+tooltip,%clipboard% ;提示文本
+sleep,500
+tooltip,
 return
 
 !#+n:: ;将鼠标所在文件重命名为剪切板内容
@@ -200,3 +208,47 @@ f4:: Winset, Alwaysontop, , A
 run notepad
 
 #MaxHotkeysPerInterval 20000
+
+;Shift + Enter 另起新行
+Shift & Enter::Send {End}{Enter}
+
+; Ctrl + BackSpace 删除单词
+#IF WinActive("ahk_class Notepad")
+Ctrl & BackSpace::Send ^+{left}{BackSpace}
+#IF
+
+;;;;;;;;;;;;;;;;;;;;;;起始(方向键);;;;;;;;;;;;;;;;;;;;;;;;;;;
+#if GetKeyState("Capslock", "P")
+k:: SendInput,{Up}     ;长按CapsLock键+k键是方向上键
+j:: SendInput,{down}  ;长按CapsLock键+j键是方向下键
+h:: SendInput,{left}    ;长按CapsLock键+h键是左键
+l:: SendInput,{right}    ;长按CapsLock键+l键是右键
+
+i:: SendInput,{PgUp}    ;长按CapsLock键+i键是上翻页键
+m:: SendInput,{PgDn}    ;长按CapsLock键+m键是下翻页键
+u:: SendInput,{home}    ;长按CapsLock键+u键是home键
+n:: SendInput,{end}    ;长按CapsLock键+n键是end键
+
+;其中的`是转义符号(如下是分号键和引号键)
+`;:: SendInput,{backspace}    ;长按CapsLock键+;键是end键
+':: SendInput,{delete}    ;长按CapsLock键+'键是end键   
+#if
+;;;;;;;;;;;;;;;;;;;;;;终止;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;起始(删除一整行Alt键+d键);;;;;;;;;;;;;;;;;;;;;;;;;;;
+!d::   
+Send {Home}
+Send +{End}  
+Send {delete}       
+return
+;;;;;;;;;;;;;;;;;;;;;;终止;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;HotString appin
+::appinn::
+text = http://www.appinn.com
+clipboard = %text%
+Send ^v
+return
+
+;HotString weibo
+::weibo::https://weibo.com
