@@ -136,6 +136,6 @@ function iip(){
 }
 
 # out ip
-function oip(){
+function cip(){
 	curl cip.cc
 }
