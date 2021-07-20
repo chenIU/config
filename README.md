@@ -1,2 +1,0 @@
-# config
-some config
