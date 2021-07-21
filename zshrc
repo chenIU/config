@@ -124,6 +124,10 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 
+# tmux
+alias tv='tmux split-window -v'
+alias th='tmux split-window -h'
+
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
