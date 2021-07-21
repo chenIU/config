@@ -76,9 +76,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
 Plug 'farmergreg/vim-lastplace'
 Plug 'chr4/nginx.vim'
+
+" markdown
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+Plug 'dkarter/bullets.vim'
 
 call plug#end()
 
