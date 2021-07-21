@@ -85,6 +85,9 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'm
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
 
+" Vim Applications
+Plug 'itchyny/calendar.vim'
+
 call plug#end()
 
 
