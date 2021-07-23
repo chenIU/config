@@ -1,7 +1,9 @@
 " === system settings
-let mapleader=","
+" this must be first,because it changes other options as a side effect.
 set nocompatible
+let mapleader=","
 syntax on
+filetype on
 set number
 set norelativenumber
 set wildmenu
@@ -12,17 +14,29 @@ set ignorecase
 set smartcase
 set smartindent
 set tabstop=2
+set noerrorbells
+set scrolloff=10
+set showmatch
+" disable the bell
+set visualbell
+set autochdir
+set pastetoggle=<F9>
 
+" reduce conflict
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Maintain undo histroy between sessions
 set undofile 
 set undodir=~/.vim/undodir
 
-set wrap
+set nowrap
 set tw=0
 
 
 " === map key
+map 9  $
 map s  :<nop>
 map Q  :q<cr>
 map S  :w<cr>
@@ -30,6 +44,11 @@ map R  :source ~/.vim/vimrc <cr>
 map rc :e ~/.vim/vimrc<cr>
 map tx :r !figlet
 map N  :tabnew<cr>
+map <silent> \d a<C-R>=strftime("%Y/%m/%d %A")<cr>
+map <silent> \t a<C-R>=strftime("%Y/%m/%d %H:%M:%S")<cr>
+
+" select all
+map <silent> <C-a> gg v G
 
 " split window
 map si :set nosplitbelow<cr>:split<cr>
@@ -54,16 +73,26 @@ map <right> :vertical resize +5<cr>
 map <leader><leader> <Esc>/<++><cr>:nohlsearch<cr>c4l
 map <leader><cr> :nohlsearch<cr>
 map <leader>sc :set spell!<cr>
+
 " redo
 map <leader>r <C-r>
 
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 
-
 " other mode map
 inoremap jj <Esc>`^
 nmap <leader>s <Plug>(easymotion-2)
+vmap <silent> ;c :s/^/\/\//<cr>:noh<cr>
+vmap <silent> ;u :s/\/\//<cr>:noh<cr>
+nmap ;s :%s/\<<C-R>=expand("<cword>")<cr>\>/
+nmap ;g :vimgrep <C-R>=expand("<cword>")<cr>
+
+
+" === abbreviation
+iab --1 -------------------------
+iab ==1 =========================
+
 
 " === plugins
 call plug#begin('~/.vim/plugged')
