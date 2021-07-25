@@ -33,7 +33,7 @@ Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
 ;===============================run start==========================================
 ;======================第一种,打开网站(ctrl+shift+?)================================
 ^+g:: run, https://github.com/ ;打开github
-^+t:: run, http://chenjianyin.com:9100/
+^+t:: run, http://chenjianyin.com
 ;^+b:: run, https://www.bilibili.com/	;打开B站
 ;^+t:: run, https://v.qq.com/		;打开腾讯视频
 ;^+y:: run, https://www.youku.com/	;打开优酷
