@@ -32,6 +32,7 @@
         {
             // Make changes here to the powershell.exe profile
             //"fontFace":"Sarasa Mono T SC",
+            "fontFace":"MesloLGS NF",
             "name": "PowerShell",
             //"background": "#013456",
             "colorSchema":"Solarized Light",
@@ -39,8 +40,9 @@
     		"useAcrylic": true,
             "fontFace":"Fira Code",
             "fontSize":10,            
-            //"backgroundImageOpacity": 0.5,
-            "backgroundImage": "F:/wallpaper/windows/windows9.jpg",
+            "backgroundImageOpacity": 0.5,
+            // "backgroundImage": "F:/wallpaper/windows/windows9.jpg",
+            "backgroundImage": "F:/wallpaper/water.jpg",
             //"backgroundImage":"desktopWallpaper",
             "backgroundImageStretchMode": "uniformToFill",
             "startingDirectory" : null, 
@@ -53,10 +55,11 @@
         },
         {
         	"name": "Ubuntu-16.04",
-            "fontFace":"DejaVu Sans Mono",
+            // "fontFace":"DejaVu Sans Mono",
+            "fontFace":"MesloLGS NF",
             "fontSize":10,            
             "backgroundImageOpacity": 0.5,
-            "backgroundImage": "F:/wallpaper/desk.jpg",
+            "backgroundImage": "F:/wallpaper/windows/windows11.jpg",
             "backgroundImageStretchMode": "fill",           
             "startingDirectory" : null, 
             "padding": "0, 0, 0, 0",
@@ -68,10 +71,11 @@
         },
         {
         	"name": "aliyun",
-            "fontFace":"DejaVu Sans Mono",
+            // "fontFace":"DejaVu Sans Mono",
+            "fontFace":"MesloLGS NF",
             "fontSize":10,            
             "backgroundImageOpacity": 0.5,
-            "backgroundImage": "F:/wallpaper/night.jpg",
+            "backgroundImage": "F:/wallpaper/bridge.png",
             "backgroundImageStretchMode": "fill",           
             "startingDirectory" : null, 
             "padding": "0, 0, 0, 0",
@@ -80,12 +84,26 @@
             "guid": "{a7a81acc-61e9-43de-b7c5-488c01525e7a}",
             "hidden": false
         }, 
+        {
+            "name": "deepin",
+            "fontFace":"MesloLGS NF",
+            "fontSize":10,            
+            "backgroundImageOpacity": 0.5,
+            "backgroundImage": "F:/wallpaper/hotel.png",
+            "backgroundImageStretchMode": "fill",           
+            "startingDirectory" : null, 
+            "padding": "0, 0, 0, 0",
+            "commandline": "ssh overmind@192.168.127.132",
+            "icon" : "E:/icon/deepin.png",
+            "guid": "{1ddc6656-46a0-4351-93e9-59754be16181}",
+            "hidden": false
+        },         
  		{
  			"name": "192.168.127.133",
             "fontFace":"DejaVu Sans Mono",
             "fontSize":10,            
             "backgroundImageOpacity": 0.5,
-            "backgroundImage": "F:/wallpaper/mountain.jpg",
+            "backgroundImage": "F:/wallpaper/plane.png",
             "backgroundImageStretchMode": "fill",           
             "startingDirectory" : null, 
             "padding": "0, 0, 0, 0",
@@ -95,25 +113,11 @@
             "hidden": false
         }, 
 		{
- 			"name": "192.168.127.134",
-            "fontFace":"DejaVu Sans Mono",
-            "fontSize":10,            
-            "backgroundImageOpacity": 0.5,
-            "backgroundImage": "F:/wallpaper/train.jpg",
-            "backgroundImageStretchMode": "fill",           
-            "startingDirectory" : null, 
-            "padding": "0, 0, 0, 0",
-            "commandline": "ssh root@192.168.127.134",
-            "icon" : "E:/icon/centOS.png",
-            "guid": "{275a40db-b7a1-4dc7-8edf-06d296048e9b}",
-            "hidden": false
-        },         
-		{
  			"name": "192.168.127.135",
             "fontFace":"DejaVu Sans Mono",
             "fontSize":10,            
             "backgroundImageOpacity": 0.5,
-            "backgroundImage": "F:/wallpaper/bicycle.jpg",
+            "backgroundImage": "F:/wallpaper/arch.jpg",
             "backgroundImageStretchMode": "fill",           
             "startingDirectory" : null, 
             "padding": "0, 0, 0, 0",
@@ -121,7 +125,21 @@
             "icon" : "E:/icon/centOS.png",
             "guid": "{3d4acea6-e91b-4500-839a-68849d31dd55}",
             "hidden": false
-        },         
+        }, 
+		{
+ 			"name": "192.168.127.137",
+            "fontFace":"DejaVu Sans Mono",
+            "fontSize":10,            
+            "backgroundImageOpacity": 0.5,
+            "backgroundImage": "F:/wallpaper/river.png",
+            "backgroundImageStretchMode": "fill",           
+            "startingDirectory" : null, 
+            "padding": "0, 0, 0, 0",
+            "commandline": "ssh root@192.168.127.137",
+            "icon" : "E:/icon/centOS.png",
+            "guid": "{275a40db-b7a1-4dc7-8edf-06d296048e9b}",
+            "hidden": false
+        },                         
 		{
 			"name": "vm_ubuntu",
             "fontFace":"DejaVu Sans Mono",
@@ -174,6 +192,7 @@
     // To unbind a default keybinding, set the command to "unbound"
     "keybindings": [
         { "command": "newTab", "keys": [ "ctrl+t" ] },
+        // { "command": { "action": "newTab", "index": 2 }, "keys": "ctrl+u" },
         { "command": { "action": "newTab", "index": 3 }, "keys": "ctrl+a" }
     ]
 }
