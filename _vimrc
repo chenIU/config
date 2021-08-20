@@ -21,6 +21,8 @@ set undodir=~\.vim\undodir
 
 set clipboard=unnamed
 
+setlocal noswapfile
+
 
 " === key map
 map s  :<nop>
