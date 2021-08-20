@@ -13,6 +13,7 @@ set ignorecase
 set smartcase
 set smartindent
 set tabstop=2
+set scrolloff=10
 
 " Maintain undo histroy between sessions
 set undofile 
@@ -73,6 +74,8 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'connorholyday/vim-snazzy'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
@@ -115,10 +118,6 @@ call plug#end()
 
 " === plugin configuration
 
-" airline-theme
-let g:airline_theme='deus'
-let g:airline#extensions#tabline#buffer_nr_show=1
-
 " NERDTree
 nmap <leader>g :NERDTreeToggle<cr>
 nmap <leader>v :NERDTreeFind<cr>
@@ -136,3 +135,10 @@ let g:session_autosave = 'no'
 " vim-translator
 nmap <silent> <leader>t <Plug>TranslateW
 vmap <silent> <leader>t <Plug>TranslateWV
+
+" theme
+let ayucolor="light"
+colorscheme snazzy
+let g:SnazzyTransparent = 1
+set background=dark
+let g:airline_theme='dracula'
