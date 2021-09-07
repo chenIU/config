@@ -123,6 +123,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'xolox/vim-misc'
@@ -216,3 +217,6 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 let g:mkdp_filetypes = ['markdown']
+
+let g:gitgutter_git_executable = 'D:\git\git\bin\git.exe'
+set updatetime=100
