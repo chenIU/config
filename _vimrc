@@ -27,7 +27,9 @@ set undodir=~\.vim\undodir
 
 set clipboard=unnamed
 
-setlocal noswapfile
+set noswapfile
+set nobackup
+set nowritebackup
 
 source ~/.vim/snippets.vim
 
