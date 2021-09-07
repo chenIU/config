@@ -154,6 +154,8 @@ Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag' " auto close tag
 
+Plug 'lfv89/vim-interestingwords'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
