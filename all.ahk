@@ -3,15 +3,15 @@
 ; SetCapsLockState, AlwaysOff
 ; SetScrollLockState, AlwaysOff
 ; return
-
 ; c & d::
 ; MsgBox "You pressed Numpad1 while holding down Numpad0."
 ; return
-
+;不添加此行空格键会失效
+;space:: Send {Space}
 
 ;=================================system command start==========================
 #Del::FileRecycleEmpty 	;清空回收站
-!x:: send !{f4}		;关闭窗口
+; space & RShift:: send !{f4}		;关闭窗口
 #m:: WinMinimize, A	;窗口最小化
 f4:: Winset, Alwaysontop, , A
 Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
@@ -38,6 +38,11 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ;第一种是输入很短的字符显示很长的字符(`n是换行的符号)
 ;::slf::Select * From `nWhere `nAnd `nGroup by `nOrder by `nlimit `n
 ;::slf:: select * from
+:*:mybatis::MyBatis
+::mysql::MySQL
+;:*:spring::Spring
+:*:linux::Linux
+;:*:java::Java
 ::btw::by the way  ; 当您按下一个默认的结束符时, 用"by the way"替换掉"btw".
 :*:make-tree::npx htree -i node_modules --output tree.txt --force
 ::tk::x-access-token
@@ -49,22 +54,27 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ^+g:: run, https://github.com/ ;打开github
 ^+b:: run, https://www.bilibili.com/	;打开B站
 ^+t:: run, http://chenjianyin.com:9100		;todo
+=======
+^+t:: run, http://chenjianyin.com:9100
+;^+b:: run, https://www.bilibili.com/	;打开B站
 ;^+y:: run, https://www.youku.com/	;打开优酷
 
 ;======================第二种,启动软件(alt+shift+?)================================
 !+a:: run, D:\AnotherRedis\Another Redis Desktop Manager\Another Redis Desktop Manager.exe ;打开AnotherRedisDesktopManager
 !+n:: run, D:\Navicat Premium\navicat.exe ;打开Navicat Premium
 !+y:: run, D:\YoudaoDict\Dict\YoudaoDict.exe ;打开有道词典
-!+p:: run, C:\Users\overmind\AppData\Local\Postman\Postman.exe ;打开postman
+; !+p:: run, C:\Users\overmind\AppData\Local\Postman\Postman.exe ;打开postman
 !+i:: run, C:\Users\overmind\scoop\apps\idea-ultimate\2020.3\bin\idea64.exe ;打开IDEA
 !+b:: run, D:\BaiduNetDisk\BaiduNetdisk.exe ;打开百度网盘
 !+d:: run, C:\Program Files\Docker\Docker\Docker Desktop.exe ;打开Docker Desktop
 !+v:: run, D:\VScode\Microsoft VS Code\Code.exe ;打开Visual Studio Code
 !+q:: run, D:\QQ\Bin\QQScLauncher.exe ;打开QQ
-^+d::Run "C:\Users\overmind\Downloads" ;打开下载目录
+^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
+;^+d::Run "C:\Users\overmind\Downloads" ;打开下载目录
 #g:: Run Cmd.exe ;打开cmd
-#z::run notepad ;打开notepad
+; space & p::run notepad ;打开notepad
 ;^+c::run,control ;打开控制面板
+^+p::run notepad ;打开notepad
 ;===============================run end==========================================
 
 
@@ -101,31 +111,31 @@ SoundBeep, var, 500
 msgbox 时间到，啊啊啊！！！快点!!!!
 return
 
-;=========================================================
-~lbutton & enter:: ;鼠标放在任务栏，滚动滚轮实现音量的加减
-exitapp  
-~WheelUp::  
-if (existclass("ahk_class Shell_TrayWnd")=1)  
-Send,{Volume_Up}  
-Return  
-~WheelDown::  
-if (existclass("ahk_class Shell_TrayWnd")=1)  
-Send,{Volume_Down}  
-Return  
-~MButton::  
-if (existclass("ahk_class Shell_TrayWnd")=1)  
-Send,{Volume_Mute}  
-Return  
+;=====================鼠标放在任务栏，滚动滚轮实现音量的加减======================
+; ~lbutton & enter:: ;
+; exitapp  
+; ~WheelUp::  
+; if (existclass("ahk_class Shell_TrayWnd")=1)  
+; Send,{Volume_Up}  
+; Return  
+; ~WheelDown::  
+; if (existclass("ahk_class Shell_TrayWnd")=1)  
+; Send,{Volume_Down}  
+; Return  
+; ~MButton::  
+; if (existclass("ahk_class Shell_TrayWnd")=1)  
+; Send,{Volume_Mute}  
+; Return  
 
-Existclass(class)  
-{  
-MouseGetPos,,,win  
-WinGet,winid,id,%class%  
-if win = %winid%  
-Return,1  
-Else  
-Return,0  
-}
+; Existclass(class)  
+; {  
+; MouseGetPos,,,win  
+; WinGet,winid,id,%class%  
+; if win = %winid%  
+; Return,1  
+; Else  
+; Return,0  
+; }
 
 ;========颜色拾取=获取RGB色===================================
 #+p::
@@ -139,7 +149,7 @@ Return,0
     ;msgbox 当前坐标RGB颜色值的十六进制值为#%color%.
 return
 
-;========复制当前鼠标所在文件文件名================================
+;========复制当前鼠标所在文件文件名(ctrl+shift+c)================================
 ^+c::
 ;请将你的鼠标放在目标文件位置，即将为你复制其文件名
 mouseclick, right
@@ -148,10 +158,10 @@ send,^c
 send, {enter}
 tooltip,已将鼠标所在文件名复制到剪切板
 sleep, 1500
-tooltip,m
+tooltip,
 return
 
-;========用快捷键得到当前选中文件的路径================================
+;========用快捷键得到当前选中文件的路径(ctrl+shift+alt+c)================================
 ^+!c::
 send ^c
 sleep,200
@@ -194,7 +204,7 @@ send,{end}{shiftdown}{home}{shiftup}{delete}{delete}
 return
 
 ;==================键盘秘技之剪切当前行==================
-:*:xxx::
+:*:xxxxx::
 send,{home}{shiftdown}{end}{shiftup}
 send,^x
 clipboard = %clipboard%   ; 把任何复制的文件, HTML 或其他格式的文本转换为纯文本
@@ -237,9 +247,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 return
 
 ;======Click表达式======================================
-!p::
-click, 51,1010
-return
+; !p::
+; click, 51,1010
+; return
 
 #MaxHotkeysPerInterval 20000
 
@@ -286,24 +296,24 @@ return
 
 ; ===========================test=======================
 
-#4::
-Send "
-(
-Line 1
-Line 2
-Apples are a fruit.
-)"
-MsgBox A_AhkVersion
-return
+; #4::
+; Send "
+; (
+; Line 1
+; Line 2
+; Apples are a fruit.
+; )"
+; MsgBox A_AhkVersion
+; return
 
 Numpad0 & Numpad2::
 Run "notepad.exe"
 return
 
-#If WinActive("Untitled - Notepad")
-#Space::
-MsgBox "You pressed WIN+SPACE in Notepad."
-return
+; #If WinActive("Untitled - Notepad")
+; #Space::
+; MsgBox "You pressed WIN+SPACE in Notepad."
+; return
 
 ; 任何标题不是无标题 - 记事本的窗口
 #If
@@ -311,12 +321,30 @@ return
 MsgBox "You pressed ALT+Q in any window."
 return
 
-#If WinActive("ahk_class Notepad")
-#Space::
-MsgBox "You pressed WIN+SPACE in Notepad."
-return
-::msg::You typed msg in Notepad
+; #If WinActive("ahk_class Notepad")
+; #Space::
+; MsgBox "You pressed WIN+SPACE in Notepad."
+; return
+; ::msg::You typed msg in Notepad
 
 >!p::
 run,https://www.bilibili.com/
+return
+
+;**********************customize******************
+;======Click表达式======================================
+CoordMode, Mouse
+^+::
+Click 1516,1016
+Click 1573,844
+return
+
+~lbutton & WheelUp::
+	SoundSet +2
+	SoundPlay *16
+return
+
+~lbutton & WheelDown::
+	SoundSet -2
+	SoundPlay *16
 return
