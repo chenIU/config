@@ -4,6 +4,10 @@
 ; SetScrollLockState, AlwaysOff
 ; return
 
+; c & d::
+; MsgBox "You pressed Numpad1 while holding down Numpad0."
+; return
+
 
 ;=================================system command start==========================
 #Del::FileRecycleEmpty 	;清空回收站
@@ -11,6 +15,22 @@
 #m:: WinMinimize, A	;窗口最小化
 f4:: Winset, Alwaysontop, , A
 Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
+^d:: send {End}+{Home}{Delete}
+; ^c:: send {End}+{Home}^c
+CapsLock::Ctrl ;CapsLock 映射 Ctrl
+^CapsLock::CapsLock     ;Ctrl+CapsLock 触发 CapsLock
+!^1::Send "{Volume_Mute}"
+!^2::Send "{Volume_Up}"
+!^3::Send "{Volume_Down}"
+^+p:: run notepad
+; Space:: send 17600738747
+^1::send 17600738747
+^2::send 411524199404182012
+^3::send 1414680900@qq.com
+; +1::send,17600738747
+; +2::send,1414680900@qq.com
+; +3::send,411524199404182012
+; ~s & f::send,17600738747
 ;=================================system command end==========================
 
 
@@ -20,6 +40,7 @@ Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
 ;::slf:: select * from
 ::btw::by the way  ; 当您按下一个默认的结束符时, 用"by the way"替换掉"btw".
 :*:make-tree::npx htree -i node_modules --output tree.txt --force
+::tk::x-access-token
 ;======================HotString end==========================================
 
 
@@ -27,7 +48,7 @@ Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
 ;======================第一种,打开网站(ctrl+shift+?)================================
 ^+g:: run, https://github.com/ ;打开github
 ^+b:: run, https://www.bilibili.com/	;打开B站
-^+t:: run, https://v.qq.com/		;打开腾讯视频
+^+t:: run, http://chenjianyin.com:9100		;todo
 ;^+y:: run, https://www.youku.com/	;打开优酷
 
 ;======================第二种,启动软件(alt+shift+?)================================
