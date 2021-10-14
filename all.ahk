@@ -28,7 +28,9 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ^2::send 411524199404182012
 ^3::send 1414680900@qq.com
 ^9::send Abc@123456
-^!,::send {Click}}
+~c & k::send {Click}}
+^Up::WinMaximize, A  ; 最大化活动窗口
+^Down::WinRestore, A ; 还原活动窗口
 ; +1::send,17600738747
 ; +2::send,1414680900@qq.com
 ; +3::send,411524199404182012
@@ -100,18 +102,18 @@ return
 ;=================================windows end=================================
 
 ;=============无敌工作神器之终极计时器===============================
-#+t:: 
-var := 0
-InputBox, time, 请输入一个时间（单位是分）
-time := time*60000
-Sleep,%time%
-loop,16
-{
-var += 180
-SoundBeep, var, 500
-}
-msgbox 时间到，啊啊啊！！！快点!!!!
-return
+; #+t:: 
+; var := 0
+; InputBox, time, 请输入一个时间（单位是分）
+; time := time*60000
+; Sleep,%time%
+; loop,16
+; {
+; var += 180
+; SoundBeep, var, 500
+; }
+; msgbox 时间到，啊啊啊！！！快点!!!!
+; return
 
 ;=====================鼠标放在任务栏，滚动滚轮实现音量的加减======================
 ; ~lbutton & enter:: ;
@@ -308,9 +310,9 @@ return
 ; MsgBox A_AhkVersion
 ; return
 
-Numpad0 & Numpad2::
-Run "notepad.exe"
-return
+; Numpad0 & Numpad2::
+; Run "notepad.exe"
+; return
 
 ; #If WinActive("Untitled - Notepad")
 ; #Space::
