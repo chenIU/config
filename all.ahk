@@ -22,11 +22,13 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 !^1::Send "{Volume_Mute}"
 !^2::Send "{Volume_Up}"
 !^3::Send "{Volume_Down}"
-^+p:: run notepad
+; ^+p:: run notepad
 ; Space:: send 17600738747
 ^1::send 17600738747
 ^2::send 411524199404182012
 ^3::send 1414680900@qq.com
+^9::send Abc@123456
+^!,::send {Click}}
 ; +1::send,17600738747
 ; +2::send,1414680900@qq.com
 ; +3::send,411524199404182012
@@ -54,8 +56,7 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ^+g:: run, https://github.com/ ;打开github
 ^+b:: run, https://www.bilibili.com/	;打开B站
 ^+t:: run, http://chenjianyin.com:9100		;todo
-=======
-^+t:: run, http://chenjianyin.com:9100
+; ^+t:: run, http://chenjianyin.com:9100
 ;^+b:: run, https://www.bilibili.com/	;打开B站
 ;^+y:: run, https://www.youku.com/	;打开优酷
 
@@ -69,7 +70,8 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 !+d:: run, C:\Program Files\Docker\Docker\Docker Desktop.exe ;打开Docker Desktop
 !+v:: run, D:\VScode\Microsoft VS Code\Code.exe ;打开Visual Studio Code
 !+q:: run, D:\QQ\Bin\QQScLauncher.exe ;打开QQ
-^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
+; ^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
+^+o:: run, C:\Users\overmind\AppData\Local\Programs\Notion\Notion.exe
 ;^+d::Run "C:\Users\overmind\Downloads" ;打开下载目录
 #g:: Run Cmd.exe ;打开cmd
 ; space & p::run notepad ;打开notepad
