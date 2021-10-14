@@ -15,7 +15,7 @@
 #m:: WinMinimize, A	;窗口最小化
 f4:: Winset, Alwaysontop, , A
 Shift & Enter::Send {End}{Enter} ;Shift + Enter 另起新行
-^d:: send {End}+{Home}{Delete}
+; ^d:: send {End}+{Home}{Delete}
 ; ^c:: send {End}+{Home}^c
 CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ^CapsLock::CapsLock     ;Ctrl+CapsLock 触发 CapsLock
@@ -26,7 +26,7 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ; Space:: send 17600738747
 ^1::send 17600738747
 ^2::send 411524199404182012
-^3::send 1414680900@qq.com
+^3::send {Text}1414680900@qq.com ;{Text}不受输入法中英文影响
 ^9::send Abc@123456
 ~c & k::send {Click}}
 ^Up::WinMaximize, A  ; 最大化活动窗口
