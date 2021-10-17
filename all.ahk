@@ -28,7 +28,8 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ^2::send 411524199404182012
 ^3::send {Text}1414680900@qq.com ;{Text}不受输入法中英文影响
 ^9::send Abc@123456
-~c & k::send {Click}}
+~c & k::send {Click}
+~r & k::send {Click Right}
 ^Up::WinMaximize, A  ; 最大化活动窗口
 ^Down::WinRestore, A ; 还原活动窗口
 ; +1::send,17600738747
@@ -72,8 +73,9 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 !+d:: run, C:\Program Files\Docker\Docker\Docker Desktop.exe ;打开Docker Desktop
 !+v:: run, D:\VScode\Microsoft VS Code\Code.exe ;打开Visual Studio Code
 !+q:: run, D:\QQ\Bin\QQScLauncher.exe ;打开QQ
-; ^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
-^+o:: run, C:\Users\overmind\AppData\Local\Programs\Notion\Notion.exe
+^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
+^!l:: run,C:\Users\overmind\scoop\apps\listen1desktop\current\Listen1.exe
+; ^+o:: run, C:\Users\overmind\AppData\Local\Programs\Notion\Notion.exe
 ;^+d::Run "C:\Users\overmind\Downloads" ;打开下载目录
 #g:: Run Cmd.exe ;打开cmd
 ; space & p::run notepad ;打开notepad
