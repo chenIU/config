@@ -42,7 +42,7 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 ;第一种是输入很短的字符显示很长的字符(`n是换行的符号)
 ;::slf::Select * From `nWhere `nAnd `nGroup by `nOrder by `nlimit `n
 ;::slf:: select * from
-:*:mybatis::MyBatis
+::mybatis::MyBatis
 ::mysql::MySQL
 ;:*:spring::Spring
 :*:linux::Linux
