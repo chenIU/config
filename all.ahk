@@ -73,7 +73,8 @@ CapsLock::Ctrl ;CapsLock 映射 Ctrl
 !+d:: run, C:\Program Files\Docker\Docker\Docker Desktop.exe ;打开Docker Desktop
 !+v:: run, D:\VScode\Microsoft VS Code\Code.exe ;打开Visual Studio Code
 !+q:: run, D:\QQ\Bin\QQScLauncher.exe ;打开QQ
-^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
+; ^+o:: run, C:\Users\overmind\scoop\apps\notion\current\Notion.exe
+^+o:: run, C:\Users\overmind\AppData\Local\Programs\Notion\Notion.exe
 ^!l:: run,C:\Users\overmind\scoop\apps\listen1desktop\current\Listen1.exe
 ; ^+o:: run, C:\Users\overmind\AppData\Local\Programs\Notion\Notion.exe
 ;^+d::Run "C:\Users\overmind\Downloads" ;打开下载目录
