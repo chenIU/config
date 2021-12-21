@@ -68,10 +68,13 @@ map sk :set splitbelow<cr>:split<cr>
 map sj :set nosplitright<cr>:vsplit<cr>
 map sl :set splitright<cr>:vsplit<cr>
 
+" jump cursor
 map <leader>i <C-w>k
 map <leader>k <C-w>j
 map <leader>j <C-w>h
 map <leader>l <C-w>l
+
+" flip
 map <leader>f <C-f>
 map <leader>b <C-b>
 
