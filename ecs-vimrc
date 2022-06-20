@@ -1,11 +1,11 @@
-"
 " __  ____   ____     _____ __  __ ____   ____ 
 "|  \/  \ \ / /\ \   / /_ _|  \/  |  _ \ / ___|
 "| |\/| |\ V /  \ \ / / | || |\/| | |_) | |    
 "| |  | | | |    \ V /  | || |  | |  _ <| |___ 
 "|_|  |_| |_|     \_/  |___|_|  |_|_| \_\\____|
                                               
-" === system settings
+" settings
+" -------------------------
 " this must be first,because it changes other options as a side effect.
 set nocompatible
 let mapleader=","
@@ -27,27 +27,25 @@ set scrolloff=10
 set showmatch
 set showcmd
 set autoread
-" disable the bell
-"set visualbell
+" set spell spelllang=en_us
+" auto change directory
 set autochdir
 set pastetoggle=<F9>
-
 " reduce conflict
 set nobackup
 set nowritebackup
 set noswapfile
-
 " Maintain undo histroy between sessions
 set undofile 
 set undodir=~/.vim/undodir
-
-set nowrap
+" auto wrap line
+set wrap
 set tw=0
-
 " no visualbell
 set noeb vb t_vb=
 
-" === map key
+" mappings
+" -------------------------
 map 9  $
 map s  :<nop>
 map Q  :q<cr>
@@ -63,35 +61,31 @@ map <silent> <C-a> gg v G
 map gb :Git blame<cr>
 
 " split window
-map si :set nosplitbelow<cr>:split<cr>
-map sk :set splitbelow<cr>:split<cr>
-map sj :set nosplitright<cr>:vsplit<cr>
+map sk :set nosplitbelow<cr>:split<cr>
+map sj :set splitbelow<cr>:split<cr>
+map sh :set nosplitright<cr>:vsplit<cr>
 map sl :set splitright<cr>:vsplit<cr>
 
 " jump cursor
-map <leader>i <C-w>k
-map <leader>k <C-w>j
-map <leader>j <C-w>h
+map <leader>k <C-w>k
+map <leader>j <C-w>j
+map <leader>h <C-w>h
 map <leader>l <C-w>l
 
-" flip
-map <leader>f <C-f>
-map <leader>b <C-b>
-
-map sv  <C-w>t<C-w>H
-map sh  <C-w>t<C-w>K
+" map sv  <C-w>t<C-w>H
+" map sh  <C-w>t<C-w>K
 
 " rotate screen
-map srh <C-w>b<C-w>K
-map srn <C-w>b<C-w>H
+" map sh <C-w>b<C-w>K
+" map sv <C-w>b<C-w>H
 
+" window size
 map <up>    :res +5<cr>
 map <down>  :res -5<cr>
-map <left>  :vertical resize -5<cr>
-map <right> :vertical resize +5<cr>
+map <left>  :vertical resize +5<cr>
+map <right> :vertical resize -5<cr>
+map <leader>= <C-w>=
 
-
-" === leader map
 map <leader><leader> <Esc>/kj<cr>:nohlsearch<cr>c4l
 map <leader><cr> :nohlsearch<cr>
 map <leader>sc :set spell!<cr>
@@ -103,29 +97,31 @@ map <leader>r <C-r>
 
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
-map <leader>c1 :set background=dark<cr>:colorscheme snazzy<cr>:AirlineTheme dracula<cr>
-map <leader>c2 :set background=light<cr>:colorscheme ayu<cr>:AirlineTheme ayu_light<cr>
-map <leader>cd :colorscheme default<cr>
 
-" other mode map
+" mark
+" map ma mA
+" map ms mS
+" map md mD
+
+" other mapping
 inoremap jj <Esc>`^
+inoremap <leader>js <C-O>yiW<End>=<C-R>0<cr>
 nmap <leader>s <Plug>(easymotion-2)
 vmap <silent> ;c :s/^/\/\//<cr>:noh<cr>
 vmap <silent> ;u :s/\/\//<cr>:noh<cr>
-nmap ;s :%s/\<<C-R>=expand("<cword>")<cr>\>/
-nmap ;g :vimgrep <C-R>=expand("<cword>")<cr>
+vnoremap . :normal! .<cr>
 
-
-" === abbreviation
+" abbreviation
 iab --1 -------------------------
 iab ==1 =========================
 
 
-" === plugins
+" plugins
+" -------------------------
 call plug#begin('~/.vim/plugged')
 
 "Plug 'bling/vim-bufferline'
-"Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 "Plug 'MattesGroeger/vim-bookmarks'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
@@ -182,8 +178,10 @@ call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 
 " NERDTree
-nmap <leader>g :NERDTreeToggle<cr>
-nmap <leader>v :NERDTreeFind<cr>
+noremap <leader>g :NERDTreeToggle<cr>
+noremap <leader>f :NERDTreeFind<cr>
+" noremap <leader>n :NERDTreeFocus<cr>
+" autocmd VimEnter * NERDTree
 
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
@@ -208,3 +206,7 @@ colorscheme snazzy
 let g:SnazzyTransparent = 1 
 set background=dark
 let g:ariline_theme='dracula'
+
+map <leader>c1 :set background=dark<cr>:colorscheme snazzy<cr>:AirlineTheme dracula<cr>
+map <leader>c2 :set background=light<cr>:colorscheme ayu<cr>:AirlineTheme ayu_light<cr>
+map <leader>cd :colorscheme default<cr>
